@@ -7,6 +7,9 @@ const surveySchema = new mongoose.Schema(
       type: String,
       required: true
     },
+    text: {
+      type: String
+    },
     questions: [questionSchema],
     owner: {
       type: mongoose.Schema.Types.ObjectId,
