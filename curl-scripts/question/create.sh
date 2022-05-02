@@ -1,6 +1,6 @@
 
   
-# TITLE="Amazing Restaurant" CONTENT="5 out of 5 stars" REST_ID="ID_HERE" USER_ID="ID_HERE" sh curl-scripts/reviews/create.sh
+# TITLE="Amazing Restaurant" CONTENT="5 out of 5 stars" REST_ID="ID_HERE" USER_ID="ID_HERE" sh curl-scripts/questions/create.sh
 
 TITLE="quetion 1 testing"
 CONTENT="content 1 testing"
