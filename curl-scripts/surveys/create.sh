@@ -1,10 +1,11 @@
 #!/bin/bash
+# sh curl-scripts/surveys/create.sh 
 
 API="http://localhost:4741"
 URL_PATH="/surveys"
-TOKEN="af5f7c5929ddf5985c90ce7415d7b6c9"
-TEXT="text test 2"
-TITLE="test title 2"
+TOKEN="4dcac617d3c6126bdb511c66388bae3b"
+TEXT="text test 1"
+TITLE="test title 1"
 
 
 curl "${API}${URL_PATH}" \
