@@ -14,11 +14,11 @@ const questionSchema = new mongoose.Schema(
       type: String,
       required: true
     },
-    owner: {
+    survey: {
     // References use the type ObjectId
       type: mongoose.Schema.Types.ObjectId,
       // the name of the model to which they refer
-      ref: 'User',
+      ref: 'Survey',
       required: true
     }
   },
