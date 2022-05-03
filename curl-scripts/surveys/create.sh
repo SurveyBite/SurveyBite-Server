@@ -3,7 +3,7 @@
 
 API="http://localhost:4741"
 URL_PATH="/surveys"
-TOKEN="af282484591cd9d7f3ce1ec08f996421"
+TOKEN="e01e49255f14671336b1089f082862c7"
 TITLE="Survey 1"
 TEXT="text 1"
 

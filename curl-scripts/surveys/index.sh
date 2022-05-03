@@ -2,7 +2,7 @@
 
 API="http://localhost:4741"
 URL_PATH="/surveys"
-TOKEN="af282484591cd9d7f3ce1ec08f996421"
+TOKEN="483938bdfc2252db6c49818ba8bfb905"
 
 curl "${API}${URL_PATH}" \
   --include \

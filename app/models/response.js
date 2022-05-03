@@ -1,9 +1,16 @@
 const mongoose = require('mongoose')
+
 const responseSchema = new mongoose.Schema(
   {
     content: {
       type: String,
       required: true
+    },
+    survey: {
+      // References use the type ObjectId
+      type: mongoose.Schema.Types.ObjectId,
+      // the name of the model to which they refer
+      ref: 'Survey'
     },
     owner: {
       // References use the type ObjectId
