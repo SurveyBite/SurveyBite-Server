@@ -4,7 +4,7 @@ const express = require('express')
 const passport = require('passport')
 
 // pull in Mongoose model for surveys
-const Survey = require('../models/survey')
+const Response = require('../models/response')
 
 // this is a collection of methods that help us detect situations when we need
 // to throw a custom error
@@ -29,14 +29,14 @@ const router = express.Router()
 
 // INDEX
 // GET /surveys
-router.get('/surveys', requireToken, (req, res, next) => {
-  Survey.find()
-    // .populate('owner')
-    .then((surveys) => {
+router.get('/responses', requireToken, (req, res, next) => {
+  Response.find()
+  // .populate('owner')
+    .then((responses) => {
       // `surveys` will be an array of Mongoose documents
       // we want to convert each one to a POJO, so we use `.map` to
       // apply `.toObject` to each one
-      return surveys.map((survey) => survey.toObject())
+      return responses.map((response) => response.toObject())
     })
   // respond with status 200 and JSON of the surveys
     .then((surveys) => res.status(200).json({ surveys: surveys }))
@@ -46,26 +46,26 @@ router.get('/surveys', requireToken, (req, res, next) => {
 
 // SHOW
 // GET /surveys/5a7db6c74d55bc51bdf39793
-router.get('/surveys/:id', requireToken, (req, res, next) => {
+router.get('/responses/:id', requireToken, (req, res, next) => {
   // req.params.id will be set based on the `:id` in the route
-  Survey.findById(req.params.id)
+  Response.findById(req.params.id)
     .then(handle404)
   // if `findById` is succesful, respond with 200 and "survey" JSON
-    .then((survey) => res.status(200).json({ survey: survey.toObject() }))
+    .then((response) => res.status(200).json({ response: response.toObject() }))
   // if an error occurs, pass it to the handler
     .catch(next)
 })
 
 // CREATE
 // POST /surveys
-router.post('/surveys', requireToken, (req, res, next) => {
+router.post('/responses', requireToken, (req, res, next) => {
   // set owner of new survey to be current user
-  req.body.survey.owner = req.user.id
+  req.body.response.owner = req.user.id
 
-  Survey.create(req.body.survey)
+  Response.create(req.body.survey)
   // respond to succesful `create` with status 201 and JSON of new "survey"
-    .then((survey) => {
-      res.status(201).json({ survey: survey.toObject() })
+    .then((response) => {
+      res.status(201).json({ response: response.toObject() })
     })
   // if an error occurs, pass it off to our error handler
   // the error handler needs the error message and the `res` object so that it
@@ -75,20 +75,20 @@ router.post('/surveys', requireToken, (req, res, next) => {
 
 // UPDATE
 // PATCH /surveys/5a7db6c74d55bc51bdf39793
-router.patch('/surveys/:id', requireToken, removeBlanks, (req, res, next) => {
+router.patch('/responses/:id', requireToken, removeBlanks, (req, res, next) => {
   // if the client attempts to change the `owner` property by including a new
   // owner, prevent that by deleting that key/value pair
-  delete req.body.survey.owner
+  delete req.body.response.owner
 
-  Survey.findById(req.params.id)
+  Response.findById(req.params.id)
     .then(handle404)
-    .then((survey) => {
+    .then((response) => {
       // pass the `req` object and the Mongoose record to `requireOwnership`
       // it will throw an error if the current user isn't the owner
-      requireOwnership(req, survey)
+      requireOwnership(req, response)
 
       // pass the result of Mongoose's `.update` to the next `.then`
-      return survey.updateOne(req.body.survey)
+      return response.updateOne(req.body.response)
     })
   // if that succeeded, return 204 and no JSON
     .then(() => res.sendStatus(204))
@@ -98,14 +98,14 @@ router.patch('/surveys/:id', requireToken, removeBlanks, (req, res, next) => {
 
 // DESTROY
 // DELETE /surveys/5a7db6c74d55bc51bdf39793
-router.delete('/surveys/:id', requireToken, (req, res, next) => {
-  Survey.findById(req.params.id)
+router.delete('/responses/:id', requireToken, (req, res, next) => {
+  Response.findById(req.params.id)
     .then(handle404)
-    .then((survey) => {
+    .then((response) => {
       // throw an error if current user doesn't own `survey`
-      requireOwnership(req, survey)
+      requireOwnership(req, response)
       // delete the survey ONLY IF the above didn't throw
-      survey.deleteOne()
+      response.deleteOne()
     })
   // send back 204 and no content if the deletion succeeded
     .then(() => res.sendStatus(204))

@@ -3,7 +3,7 @@
 // timestamps
 
 const mongoose = require('mongoose')
-const responseSchema = require('./response')
+// const responseSchema = require('./response')
 
 const questionSchema = new mongoose.Schema(
   {
@@ -15,7 +15,7 @@ const questionSchema = new mongoose.Schema(
       type: String,
       required: true
     },
-    responses: [responseSchema],
+    // responses: [responseSchema],
     survey: {
       // References use the type ObjectId
       type: mongoose.Schema.Types.ObjectId,

@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const questionSchema = require('./question')
+const responseSchema = require('./response')
 
 const surveySchema = new mongoose.Schema(
   {
@@ -11,6 +12,7 @@ const surveySchema = new mongoose.Schema(
       type: String
     },
     questions: [questionSchema],
+    responses: [responseSchema],
     owner: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User',

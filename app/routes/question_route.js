@@ -3,7 +3,7 @@ const express = require('express')
 
 const router = express.Router()
 
-// const handle404 = require('./../lib/custom_errors')
+const handle404 = require('./../lib/custom_errors')
 
 const Survey = require('./../models/survey')
 
@@ -13,7 +13,7 @@ router.post('/questions', (req, res, next) => {
   const surveyId = questionData.surveyId
 
   Survey.findById(surveyId)
-    // .then(handle404)
+    .then(handle404)
     .then((survey) => {
       survey.questions.push(questionData)
 
@@ -29,7 +29,7 @@ router.patch('/questions/:questionID', (req, res, next) => {
   const surveyID = questionData.surveyId
 
   Survey.findById(surveyID)
-    // .then(handle404)
+    .then(handle404)
     .then((survey) => {
       const question = survey.questions.id(questionID)
 
@@ -46,7 +46,7 @@ router.delete('/questions/:questionID', (req, res, next) => {
   const surveyID = req.body.question.surveyId
 
   Survey.findById(surveyID)
-    // .then(handle404)
+    .then(handle404)
     .then((survey) => {
       const question = survey.questions.id(questionID)
 
