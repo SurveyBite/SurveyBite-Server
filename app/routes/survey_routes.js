@@ -31,6 +31,7 @@ const router = express.Router()
 // GET /surveys
 router.get('/surveys', requireToken, (req, res, next) => {
   Survey.find()
+    .populate('owner')
     .then((surveys) => {
       // `surveys` will be an array of Mongoose documents
       // we want to convert each one to a POJO, so we use `.map` to

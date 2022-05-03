@@ -20,8 +20,7 @@ const questionSchema = new mongoose.Schema(
       // References use the type ObjectId
       type: mongoose.Schema.Types.ObjectId,
       // the name of the model to which they refer
-      ref: 'Survey',
-      required: true
+      ref: 'Survey'
     },
     owner: {
       // References use the type ObjectId

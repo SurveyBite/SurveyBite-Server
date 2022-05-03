@@ -1,11 +1,11 @@
 
   
-# TITLE="Amazing Restaurant" CONTENT="5 out of 5 stars" REST_ID="ID_HERE" USER_ID="ID_HERE" sh curl-scripts/questions/create.sh
+# TITLE="Amazing Restaurant" CONTENT="5 out of 5 stars" REST_ID="ID_HERE" USER_ID="ID_HERE" sh curl-scripts/question/create.sh
 
-TITLE="quetion 100 testing"
-CONTENT="content 100 testing"
-SURVEYID="62702bd15d512f19e3192245"
-USER_ID="626ed3fe209b8605af744ee5"
+TITLE="Question 2"
+CONTENT="What do you want question 2 to be?"
+SURVEYID="627082e57af43f0817f64d01"
+USER_ID="62708066b52102073a2bd3f9"
 
   curl 'http://localhost:4741/questions' \
     --include \

@@ -3,9 +3,10 @@
 
 API="http://localhost:4741"
 URL_PATH="/surveys"
-TOKEN="24791d81f1c4b9049b1705bf2d637dc4"
-TEXT="Hiep 1"
-TITLE="hieppie"
+TOKEN="af282484591cd9d7f3ce1ec08f996421"
+TITLE="Survey 1"
+TEXT="text 1"
+
 
 
 curl "${API}${URL_PATH}" \
@@ -15,8 +16,8 @@ curl "${API}${URL_PATH}" \
   --header "Authorization: Bearer ${TOKEN}" \
   --data '{
     "survey": {
-      "text": "'"${TEXT}"'",
-      "title": "'"${TITLE}"'"
+      "title": "'"${TITLE}"'",
+      "text": "'"${TEXT}"'"
     }
   }'
 
