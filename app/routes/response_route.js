@@ -44,20 +44,25 @@ router.post('/responses', requireToken, (req, res, next) => {
 
 router.get('/responses/:responseID', requireToken, (req, res, next) => {
   const responseID = req.params.responseID
-  const responseData = req.body.response
-  const surveyID = responseData.surveyId
+  const surveyID = req.body.response.surveyId
+  console.log(req.body)
 
   // req.params.id will be set based on the `:id` in the route
   Survey.findById(surveyID)
-  console.log(responseID, surveyID, survey, responseData)
-  const response = survey.responses.id(responseID)
+    .then((survey) => {
+      const response = survey.responses.id(responseID)
 
-  response.get(responseData)
+      return response
+    })
+  // console.log(responseID, surveyID, survey, responseData)
+  // const response = survey.responses.id(responseID)
 
-  return survey.save()
+  // response.get(responseData)
+
+  // return survey.save()
   // .then(handle404)
   // if `findById` is succesful, respond with 200 and "survey" JSON
-    .then((survey) => res.status(200).json({ survey: survey.toObject() }))
+    .then((response) => res.status(200).json({ response: response.toObject() }))
   // if an error occurs, pass it to the handler
     .catch(next)
 })
