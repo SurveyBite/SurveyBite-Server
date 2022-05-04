@@ -1,6 +1,7 @@
 const express = require('express')
 // const { resetWatchers } = require('nodemon/lib/monitor/watch')
 const passport = require('passport')
+const survey = require('./../models/survey')
 
 const router = express.Router()
 
@@ -42,8 +43,18 @@ router.post('/responses', requireToken, (req, res, next) => {
 })
 
 router.get('/responses/:responseID', requireToken, (req, res, next) => {
+  const responseID = req.params.responseID
+  const responseData = req.body.response
+  const surveyID = responseData.surveyId
+
   // req.params.id will be set based on the `:id` in the route
-  Survey.findById(req.params.id)
+  Survey.findById(surveyID)
+  console.log(responseID, surveyID, survey, responseData)
+  const response = survey.responses.id(responseID)
+
+  response.get(responseData)
+
+  return survey.save()
   // .then(handle404)
   // if `findById` is succesful, respond with 200 and "survey" JSON
     .then((survey) => res.status(200).json({ survey: survey.toObject() }))
