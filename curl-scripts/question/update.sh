@@ -7,6 +7,7 @@ USER_ID="626ed3fe209b8605af744ee5"
 curl "http://localhost:4741/questions/${QUESTION_ID}" \
   --include \
   --request PATCH \
+  --header "Authorization: Bearer ${TOKEN}" \
   --header "Content-Type: application/json" \
   --data '{
     "question": {

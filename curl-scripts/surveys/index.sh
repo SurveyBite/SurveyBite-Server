@@ -1,8 +1,8 @@
 #!/bin/sh
 
 API="http://localhost:4741"
-URL_PATH="/surveys"
-TOKEN="c5ec309970824d9d68b3e856ac01b731"
+URL_PATH="/responses"
+TOKEN="4c75aac8311907b7a3d8a2b737a7353e"
 
 curl "${API}${URL_PATH}" \
   --include \

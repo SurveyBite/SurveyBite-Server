@@ -1,6 +1,6 @@
-TOKEN="5b6d9b3384a533f984d1bfc667a803d7"
+TOKEN="4c75aac8311907b7a3d8a2b737a7353e"
 CONTENT="tester content"
-SURVEYID="62713efd647b990ea5965ed8"
+SURVEYID="6272a13174a2fa1337a08e67"
 USER_ID="62713ef0647b990ea5965ed7"
  
   curl 'http://localhost:4741/responses' \

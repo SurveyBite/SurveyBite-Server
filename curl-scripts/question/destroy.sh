@@ -6,6 +6,7 @@ SURVEY_ID="626ff0c026fbf10a28394020"
 curl "http://localhost:4741/questions/${QUESTION_ID}" \
   --include \
   --request DELETE \
+  --header "Authorization: Bearer ${TOKEN}" \
   --header "Content-Type: application/json" \
   --data '{
     "question": {

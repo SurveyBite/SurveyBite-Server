@@ -1,19 +1,20 @@
 const express = require('express')
 // const { resetWatchers } = require('nodemon/lib/monitor/watch')
-
+const passport = require('passport')
 const router = express.Router()
+const requireToken = passport.authenticate('bearer', { session: false })
 
 // const handle404 = require('./../lib/custom_errors')
 
 const Survey = require('./../models/survey')
 
-router.post('/questions', (req, res, next) => {
+router.post('/questions', requireToken, (req, res, next) => {
   const questionData = req.body.question
 
   const surveyId = questionData.surveyId
 
   Survey.findById(surveyId)
-    // .then(handle404)
+  // .then(handle404)
     .then((survey) => {
       survey.questions.push(questionData)
 
@@ -23,13 +24,13 @@ router.post('/questions', (req, res, next) => {
     .catch(next)
 })
 
-router.patch('/questions/:questionID', (req, res, next) => {
+router.patch('/questions/:questionID', requireToken, (req, res, next) => {
   const questionID = req.params.questionID
   const questionData = req.body.question
   const surveyID = questionData.surveyId
 
   Survey.findById(surveyID)
-    // .then(handle404)
+  // .then(handle404)
     .then((survey) => {
       const question = survey.questions.id(questionID)
 
@@ -41,12 +42,12 @@ router.patch('/questions/:questionID', (req, res, next) => {
     .catch(next)
 })
 
-router.delete('/questions/:questionID', (req, res, next) => {
+router.delete('/questions/:questionID', requireToken, (req, res, next) => {
   const questionID = req.params.questionID
   const surveyID = req.body.question.surveyId
 
   Survey.findById(surveyID)
-    // .then(handle404)
+  // .then(handle404)
     .then((survey) => {
       const question = survey.questions.id(questionID)
 
