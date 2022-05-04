@@ -1,13 +1,16 @@
 const express = require('express')
 // const { resetWatchers } = require('nodemon/lib/monitor/watch')
+const passport = require('passport')
 
 const router = express.Router()
+
+const requireToken = passport.authenticate('bearer', { session: false })
 
 // const handle404 = require('./../lib/custom_errors')
 
 const Survey = require('./../models/survey')
 
-router.post('/responses', (req, res, next) => {
+router.post('/responses', requireToken, (req, res, next) => {
   const responseData = req.body.response
 
   const surveyId = responseData.surveyId
@@ -23,7 +26,7 @@ router.post('/responses', (req, res, next) => {
     .catch(next)
 })
 
-router.patch('/responses/:responseID', (req, res, next) => {
+router.patch('/responses/:responseID', requireToken, (req, res, next) => {
   const responseID = req.params.responseID
   const responseData = req.body.response
   const surveyID = responseData.surveyId
@@ -41,7 +44,7 @@ router.patch('/responses/:responseID', (req, res, next) => {
     .catch(next)
 })
 
-router.delete('/responses/:responseID', (req, res, next) => {
+router.delete('/responses/:responseID', requireToken, (req, res, next) => {
   const responseID = req.params.responseID
   const surveyID = req.body.response.surveyId
 

@@ -7,6 +7,7 @@ const cors = require('cors')
 const surveyRoutes = require('./app/routes/survey_routes')
 const userRoutes = require('./app/routes/user_routes')
 const questionRoutes = require('./app/routes/question_route')
+const responseRoutes = require('./app/routes/response_route')
 
 // require middleware
 const errorHandler = require('./lib/error_handler')
@@ -64,6 +65,7 @@ app.use(requestLogger)
 app.use(surveyRoutes)
 app.use(userRoutes)
 app.use(questionRoutes)
+app.use(responseRoutes)
 
 // register error handling middleware
 // note that this comes after the route middlewares, because it needs to be
