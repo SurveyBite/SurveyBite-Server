@@ -6,6 +6,10 @@ const responseSchema = new mongoose.Schema(
       type: String,
       required: true
     },
+    question: {
+      type: String,
+      required: true
+    },
     survey: {
       // References use the type ObjectId
       type: mongoose.Schema.Types.ObjectId,
