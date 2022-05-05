@@ -1,7 +1,7 @@
 const express = require('express')
 // const { resetWatchers } = require('nodemon/lib/monitor/watch')
 const passport = require('passport')
-const survey = require('./../models/survey')
+// const survey = require('./../models/survey')
 
 const router = express.Router()
 
