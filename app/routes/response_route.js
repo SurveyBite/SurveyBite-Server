@@ -45,7 +45,7 @@ router.post('/responses', requireToken, (req, res, next) => {
 router.get('/responses/:responseID', requireToken, (req, res, next) => {
   const responseID = req.params.responseID
   const surveyID = req.body.response.surveyId
-  console.log(req.body)
+  // console.log(req.body)
 
   // req.params.id will be set based on the `:id` in the route
   Survey.findById(surveyID)
