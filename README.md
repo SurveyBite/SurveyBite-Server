@@ -18,7 +18,7 @@ Once you have an account you can: make a survey, take a survey, and see your sur
 
 ### Wireframes: 
 
-![WireFrame](./app/images/Wireframe.png)
+![WireFrame](./app/images/WireFrame.png)
 
 ### ERD: 
 
