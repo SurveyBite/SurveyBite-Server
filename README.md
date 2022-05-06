@@ -18,11 +18,11 @@ Once you have an account you can: make a survey, take a survey, and see your sur
 
 ### Wireframes: 
 
-![WireFrame](./src/images/Wireframe.png)
+![WireFrame](./app/images/Wireframe.png)
 
 ### ERD: 
 
-![ERD](./src/images/ERD.png)
+![ERD](./app/images/ERD.png)
 
 
 ### User stories: 
